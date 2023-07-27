@@ -5,6 +5,18 @@ export const BannerWrapper = styled.div`
     justify-content: space-between;
     max-width: 1440px;
     margin-top: 5rem;
+
+    position: relative;
+
+    .bannerBackLayer {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        left: -30rem;
+        height: 100%;
+        width: 99.8vw;
+        z-index: -19;
+    }
 `
 
 export const DescriptionWrapper = styled.div`
@@ -39,7 +51,6 @@ export const BannerFooterWrapper = styled.div`
     height: 5.25rem;
 
     margin-top: 4.125rem;
-
     
     
 `

@@ -1,10 +1,12 @@
 import { BannerFooterWrapper, BannerFooterWrapperItem, BannerHeaderWrapper, BannerImageWrapper, BannerWrapper, DescriptionWrapper } from "./styles";
 import BannerCoffeeImage from '../../assets/CoffeeDeliveryBannerImage.png'
 import { ShoppingCart, Timer, Package, Coffee } from 'phosphor-react'
+import backBannerLayer from '../../assets/backBannerLayer.png'
 
 export function Banner() {
     return(
         <BannerWrapper>
+            <img className="bannerBackLayer" src={backBannerLayer} alt="" />
             <DescriptionWrapper>
                 <BannerHeaderWrapper>
                     <h1>Encontre o café perfeito para qualquer hora do dia</h1>

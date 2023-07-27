@@ -16,6 +16,8 @@ export const GlobalStyle = createGlobalStyle`
         max-width: 74rem;
         margin: 0 auto;
 
+        background-color: #fafafa;
+
 
         @media (max-width: 1200px) {
             padding: 0 2rem;
@@ -24,6 +26,5 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
         text-decoration: none;
-        /* color: var(--base-title); */
     }
 `
