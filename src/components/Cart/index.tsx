@@ -1,5 +1,5 @@
 import { CartAndTitleWrapper, CartItemAmountRemoveButton, CartItemInfoWrapper, CartItemWrapper, CartSummary, CartWrapper, ConfirmOrder } from "./styles";
-import CartItemImage from '../../assets/CoffeeSampleImage.png'
+import CartItemImage from '../../assets/coffeeSamples/expresso-tradicional.png'
 import { AmountButton } from "../buttons/AmountButton";
 import { RemoveButton } from "../buttons/RemoveButton";
 

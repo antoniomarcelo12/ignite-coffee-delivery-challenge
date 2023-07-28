@@ -1,17 +1,25 @@
 import { CoffeDetails, CoffeCardWrapper, CardAmountCart } from "./styles";
-import CoffeeSampleImage from '../../assets/CoffeeSampleImage.png'
 import { AmountButton } from "../buttons/AmountButton";
 import { AddToCartButton } from "./components/AddToCartButton";
+import { ProductType } from "../../contexts/AllProductsProvider";
 
-export function CoffeeCard() {
+interface CoffeeCardProps {
+    coffee: ProductType
+}
+
+export function CoffeeCard({ coffee }: CoffeeCardProps) {
     return(
         <CoffeCardWrapper>
-            <img src={CoffeeSampleImage} alt="" />
-            <p className="CoffeeCardType">Tradicional</p>
-            <p className="CoffeeName">Expresso Tradicional</p>
-            <p className="CoffeeDescription">O tradicional café feito com água quente e grãos moídos</p>
+            <img src={coffee.coffeeImage} alt="" />
+            <div className="CoffeeCardType">
+                {
+                    coffee.coffeeTypes.map(type => <p key={type}>{type}</p>)
+                }
+            </div>
+            <p className="CoffeeName">{coffee.coffeeName}</p>
+            <p className="CoffeeDescription">{coffee.coffeeDescription}</p>
             <CoffeDetails>
-                <p className="CoffeePrice"><span>R$</span>9,90</p>
+                <p className="CoffeePrice"><span>R$</span>{coffee.coffeePrice}</p>
                 <CardAmountCart>
                     <AmountButton />
                     <AddToCartButton />

@@ -18,17 +18,21 @@ export const CoffeCardWrapper = styled.div`
     }
 
     .CoffeeCardType {
-        background-color: ${props => props.theme['yellow-light']};
-        color: ${props => props.theme['yellow-dark']};
-        margin-top: .75rem;
-        padding: 4px 8px;
-        border-radius: 100px;
-        font-family: Roboto;
-        font-size: .625rem;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 130%;
-        text-transform: uppercase;
+        display: flex;
+        gap: .25rem;
+        p {
+            background-color: ${props => props.theme['yellow-light']};
+            color: ${props => props.theme['yellow-dark']};
+            margin-top: .75rem;
+            padding: 4px 8px;
+            border-radius: 100px;
+            font-family: Roboto;
+            font-size: .625rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 130%;
+            text-transform: uppercase;
+        }
     }
 
     .CoffeeName {
