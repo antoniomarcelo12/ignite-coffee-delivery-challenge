@@ -15,7 +15,8 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Roboto';
         max-width: 74rem;
         margin: 0 auto;
-
+        overflow-x: hidden;
+        padding-bottom: 10rem;
         background-color: #fafafa;
 
 

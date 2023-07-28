@@ -5,7 +5,6 @@ export const BannerWrapper = styled.div`
     justify-content: space-between;
     max-width: 1440px;
     margin-top: 5rem;
-
     position: relative;
 
     .bannerBackLayer {
@@ -14,7 +13,7 @@ export const BannerWrapper = styled.div`
         padding: 0;
         left: -30rem;
         height: 100%;
-        width: 99.8vw;
+        width: calc(100vw + 30rem);
         z-index: -19;
     }
 `

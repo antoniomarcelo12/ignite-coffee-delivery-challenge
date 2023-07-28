@@ -1,11 +1,14 @@
 import { HeaderCartIconWrapper, HeaderContentWrapper, HeaderLocationWrapper, HeaderWrapper } from "./styles";
 import CoffeeDeliveryLogoImg from '../../assets/CoffeeDeliveryLogo.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react'
+import { Link } from "react-router-dom";
 
 export function Header() {
     return(
         <HeaderWrapper>
-            <img src={CoffeeDeliveryLogoImg} alt="" />
+            <Link to='/'>
+                <img src={CoffeeDeliveryLogoImg} alt="" />
+            </Link>
 
             <HeaderContentWrapper>
                 <HeaderLocationWrapper>
@@ -14,7 +17,9 @@ export function Header() {
                 </HeaderLocationWrapper>
 
                 <HeaderCartIconWrapper>
-                    <ShoppingCart width={22} weight="fill" />
+                    <Link to='/cart'>
+                        <ShoppingCart width={22} weight="fill" />
+                    </Link>
                 </HeaderCartIconWrapper>
             </HeaderContentWrapper>
         </HeaderWrapper>

@@ -35,9 +35,12 @@ export const HeaderCartIconWrapper = styled.div`
     align-items: center;
     background-color: ${props => props.theme['yellow-light']};
     
-    padding: .5rem;
     border-radius: 6px;
     
+    a {
+        padding: .5rem;
+    }
+
     svg {
         color: ${props => props.theme['yellow-dark']};
     }

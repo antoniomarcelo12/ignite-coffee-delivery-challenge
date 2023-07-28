@@ -1,6 +1,6 @@
 import { CoffeDetails, CoffeCardWrapper, CardAmountCart } from "./styles";
 import CoffeeSampleImage from '../../assets/CoffeeSampleImage.png'
-import { AmountButton } from "./components/AmountButton";
+import { AmountButton } from "../buttons/AmountButton";
 import { AddToCartButton } from "./components/AddToCartButton";
 
 export function CoffeeCard() {
