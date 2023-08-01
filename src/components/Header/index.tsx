@@ -2,8 +2,19 @@ import { HeaderCartIconWrapper, HeaderContentWrapper, HeaderLocationWrapper, Hea
 import CoffeeDeliveryLogoImg from '../../assets/CoffeeDeliveryLogo.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { Link } from "react-router-dom";
+import { CartContext } from "../../contexts/CartContext";
+import { useContext, useEffect } from "react";
 
 export function Header() {
+
+    const {totalItemsOnCart} = useContext(CartContext)
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition( location => {
+            console.log(location);
+          });
+    }, [])
+
     return(
         <HeaderWrapper>
             <Link to='/'>
@@ -19,6 +30,9 @@ export function Header() {
                 <HeaderCartIconWrapper>
                     <Link to='/cart'>
                         <ShoppingCart width={22} weight="fill" />
+                        {
+                        totalItemsOnCart > 0 ? <p>{ totalItemsOnCart }</p> : null
+                        }
                     </Link>
                 </HeaderCartIconWrapper>
             </HeaderContentWrapper>

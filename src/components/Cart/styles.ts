@@ -24,6 +24,8 @@ export const CartWrapper = styled.div`
     background-color: ${props => props.theme['base-card']};
 
     padding: 40px;
+
+    min-width: 28rem;
 `
 
 export const CartItemWrapper = styled.div`
@@ -36,6 +38,11 @@ export const CartItemWrapper = styled.div`
     .cartItemImage {
         width: 64px;
         height: 64px;
+    }
+    
+    .cartItemImageNone{
+        display: none;
+
     }
 
     .cartItemPrice {
@@ -124,7 +131,13 @@ export const ConfirmOrder = styled.button`
     line-height: 160%;
     text-transform: uppercase;
 
-    &:hover {
+    &:not(:disabled):hover {
         background-color: ${props => props.theme['yellow-dark']}
+    }
+
+    &:disabled {
+        background-color: ${props => props.theme['yellow']};
+        opacity: .9;
+        cursor: not-allowed;
     }
 `

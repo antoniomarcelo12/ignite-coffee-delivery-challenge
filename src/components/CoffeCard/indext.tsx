@@ -1,10 +1,10 @@
 import { CoffeDetails, CoffeCardWrapper, CardAmountCart } from "./styles";
 import { AmountButton } from "../buttons/AmountButton";
 import { AddToCartButton } from "./components/AddToCartButton";
-import { ProductType } from "../../contexts/AllProductsProvider";
+import { CoffeeCartType } from "../../contexts/CartContext";
 
 interface CoffeeCardProps {
-    coffee: ProductType
+    coffee: CoffeeCartType
 }
 
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
@@ -21,7 +21,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
             <CoffeDetails>
                 <p className="CoffeePrice"><span>R$</span>{coffee.coffeePrice}</p>
                 <CardAmountCart>
-                    <AmountButton />
+                    <AmountButton coffee={coffee} />
                     <AddToCartButton />
                 </CardAmountCart>
             </CoffeDetails>

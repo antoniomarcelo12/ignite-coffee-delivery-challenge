@@ -1,9 +1,18 @@
 import { Trash } from "phosphor-react";
 import { RemoveButtonWrapper } from "./styles";
+import { useContext } from "react";
+import { CartContext, CoffeeCartType } from "../../../contexts/CartContext";
 
-export function RemoveButton() {
+interface RemoveButtonProps {
+    coffee: CoffeeCartType
+}
+
+export function RemoveButton({ coffee }: RemoveButtonProps) {
+
+    const { removeProductFromCart } = useContext(CartContext)
+
     return(
-        <RemoveButtonWrapper className="removeButton">
+        <RemoveButtonWrapper className="removeButton" onClick={() => removeProductFromCart(coffee)}>
             <Trash size={16} />
             <span>REMOVER</span>
         </RemoveButtonWrapper>

@@ -1,43 +1,89 @@
 import { CartAndTitleWrapper, CartItemAmountRemoveButton, CartItemInfoWrapper, CartItemWrapper, CartSummary, CartWrapper, ConfirmOrder } from "./styles";
-import CartItemImage from '../../assets/coffeeSamples/expresso-tradicional.png'
 import { AmountButton } from "../buttons/AmountButton";
 import { RemoveButton } from "../buttons/RemoveButton";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 export function Cart() {
+
+    const { cartState, totalPrice } = useContext(CartContext)
+    
     return(
         <CartAndTitleWrapper>
             <h1 className="completeYourOrderCartHeader">Cafés selecionados</h1>
 
             <CartWrapper>
-                <CartItemWrapper>
-
-                    <img className="cartItemImage" src={CartItemImage} alt="" />
                     
-                    <CartItemInfoWrapper>
-                        <h3>Expresso Tradicional</h3>
-                        
-                        <CartItemAmountRemoveButton>
-                            <AmountButton />
-                            <RemoveButton />
-                        </CartItemAmountRemoveButton>
-                        
-                    </CartItemInfoWrapper>
 
-                    <div className="cartItemPrice">
-                        <span>R$ 9,90</span>
-                    </div>
+                    {
+                        cartState.length > 0 ? (
+                                            cartState.map(item => {
+                                                return(
+                                                <CartItemWrapper key={item.coffeeName}>
 
-                </CartItemWrapper>
+                                                    <img className="cartItemImage" src={item.coffeeImage} alt="" />
 
-                <CartSummary>
-                    <div><p>Total de itens</p><p>R$ 29,70</p></div>
-                    <div><p>Entrega</p><p>R$ 3,50</p></div>
-                    <div className="summaryTotal"><p>Total</p><p>R$ 33,20</p></div>
-                </CartSummary>
+                                                    <CartItemInfoWrapper>
+                                                        <h3>{item.coffeeName}</h3>
+                                                        
+                                                        <CartItemAmountRemoveButton>
+                                                            <AmountButton coffee={item}/>
+                                                            <RemoveButton coffee={item} />
+                                                        </CartItemAmountRemoveButton>
+                                                        
+                                                    </CartItemInfoWrapper>
+                                
+                                                    <div className="cartItemPrice">
+                                                        <span>R$ {item.coffeePrice}</span>
+                                                    </div>
+                                
+                                                </CartItemWrapper>
+                                                );
+                                            })
+                                                ) : (
+                                                        <CartItemWrapper>
 
-                <ConfirmOrder>
-                    Confirmar pedido
-                </ConfirmOrder>
+                                                            <img className="cartItemImageNone" src='' alt="" />
+
+                                                            <CartItemInfoWrapper>
+                                                                <h3>Selecione algum produto!</h3>
+                                                                
+                                                            </CartItemInfoWrapper>
+                                        
+                                                        </CartItemWrapper>
+                                        )}
+
+
+
+                {
+                        cartState.length > 0 ? (
+                                    <>
+                                        <CartSummary>
+                                            <div><p>Total de itens</p><p>R$ { totalPrice }</p></div>
+                                            <div><p>Entrega</p><p>R$ 3,50</p></div>
+                                            <div className="summaryTotal"><p>Total</p><p>R$ {totalPrice + 3.50}</p></div>
+                                        </CartSummary>
+
+                                        <ConfirmOrder>
+                                            Confirmar pedido
+                                        </ConfirmOrder>
+                                    </>
+
+                        ) : (
+                            <>
+                                <CartSummary>
+                                    <div><p>Total de itens</p><p>R$ { totalPrice }</p></div>
+                                    <div><p>Entrega</p><p>R$ 0,00</p></div>
+                                    <div className="summaryTotal"><p>Total</p><p>R$ {totalPrice}</p></div>
+                                </CartSummary>
+
+                                <ConfirmOrder disabled={true}>
+                                    Confirmar pedido
+                                </ConfirmOrder>
+                            </>
+                        )
+
+                }                                                    
 
             </CartWrapper>
         </CartAndTitleWrapper>

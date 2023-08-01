@@ -12,7 +12,7 @@ export function CoffeeList() {
             <CoffeeCardWrapper>
                 {
                     AllProductsData.map(coffee => {
-                        return <CoffeeCard key={coffee.coffeeName} coffee={coffee} />
+                        return <CoffeeCard key={coffee.coffeeName} coffee={{...coffee, coffeeAmount: 0}} />
                     })
                 }
             </CoffeeCardWrapper>

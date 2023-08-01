@@ -1,12 +1,30 @@
+import { useContext } from "react";
+import { ProductType } from "../../../contexts/AllProductsProvider";
 import { CardAmountButtonWrapper } from "./styles";
 import { Minus, Plus } from 'phosphor-react'
+import { CartContext, CoffeeCartType } from "../../../contexts/CartContext";
 
-export function AmountButton() {
+interface AmountButtonProps {
+    coffee: CoffeeCartType;
+}
+
+export function AmountButton({ coffee }: AmountButtonProps) {
+    let localCoffeeAmount = 0
+
+    const { cartState, addItemToCart, removeItemFromCart } = useContext(CartContext)
+    
+
+    cartState.forEach(el => {
+        if(el.coffeeName === coffee.coffeeName) {
+            localCoffeeAmount = el.coffeeAmount
+        }
+    })
+
     return(
         <CardAmountButtonWrapper>
-            <button className='decreaseAmountButton'><Minus /></button>
-            <span>1</span>
-            <button className="increaseAmountButton"><Plus /></button>
+            <button className='decreaseAmountButton' onClick={() => removeItemFromCart(coffee)}><Minus /></button>
+            <span>{ localCoffeeAmount }</span>
+            <button className="increaseAmountButton" onClick={() => addItemToCart(coffee)}><Plus /></button>
         </CardAmountButtonWrapper>
     );
 }

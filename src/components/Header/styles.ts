@@ -36,6 +36,8 @@ export const HeaderCartIconWrapper = styled.div`
     background-color: ${props => props.theme['yellow-light']};
     
     border-radius: 6px;
+
+    position: relative;
     
     a {
         padding: .5rem;
@@ -43,5 +45,27 @@ export const HeaderCartIconWrapper = styled.div`
 
     svg {
         color: ${props => props.theme['yellow-dark']};
+    }
+
+    p {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: ${props => props.theme['yellow-dark']};
+        padding: .5rem;
+        border-radius: 100%;
+        height: 20px;
+        width: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+
+        font-family: 'Roboto';
+        font-size: .875rem;
+        
+        line-height: 130%;
+
+
     }
 `

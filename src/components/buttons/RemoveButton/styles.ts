@@ -11,6 +11,8 @@ export const RemoveButtonWrapper = styled.button`
     background-color: ${props => props.theme['base-button']};
     transition: background-color .2s;
 
+    cursor: pointer;
+    
     span {
         color: ${props => props.theme['base-text']};
 
