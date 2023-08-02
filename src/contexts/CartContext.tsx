@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useState } from "react";
 
 interface CartContextProviderProps {
     children: ReactNode
@@ -83,8 +83,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         totalPrice += (el.coffeePrice * el.coffeeAmount)
         totalPrice = +totalPrice.toFixed(2)
     })
-
-    console.log("cartState", cartState)
 
     return(
         <CartContext.Provider value={{cartState, addItemToCart, removeItemFromCart, totalItemsOnCart, totalPrice, removeProductFromCart}}>

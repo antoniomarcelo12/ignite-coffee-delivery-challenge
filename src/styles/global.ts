@@ -19,7 +19,6 @@ export const GlobalStyle = createGlobalStyle`
         padding-bottom: 10rem;
         background-color: #fafafa;
 
-
         @media (max-width: 1200px) {
             padding: 0 2rem;
         }

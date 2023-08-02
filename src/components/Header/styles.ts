@@ -52,6 +52,7 @@ export const HeaderCartIconWrapper = styled.div`
         top: -10px;
         right: -10px;
         background-color: ${props => props.theme['yellow-dark']};
+        color: ${props => props.theme['white']};
         padding: .5rem;
         border-radius: 100%;
         height: 20px;
