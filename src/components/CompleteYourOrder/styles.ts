@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const CompleteYourOrderWrapper = styled.div`//
+export const CompleteYourOrderWrapper = styled.form`//
     display: flex;
     gap: 2rem;
 `
@@ -38,7 +38,7 @@ export const AddressWrapper = styled.div`//
     min-width: 270px;
     
     
-    background-color: ${props => props.theme['base-card']};
+    background-color: ${props => props.theme['basecard']};
     
     
     padding: 2.5rem;
@@ -79,4 +79,8 @@ export const CompleteYourOrderCartWrapper = styled.div`//
      flex-wrap: wrap; 
      gap: 2rem; 
 
+`
+
+export const RandomButton = styled.button`
+    
 `

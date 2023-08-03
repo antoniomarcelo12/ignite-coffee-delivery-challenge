@@ -110,7 +110,7 @@ export const CartSummary = styled.div`
     }
 `
 
-export const ConfirmOrder = styled.button`
+export const ConfirmOrderButton = styled.button`
     width: 100%;
     
     border: none;
@@ -130,6 +130,11 @@ export const ConfirmOrder = styled.button`
     font-weight: 700;
     line-height: 160%;
     text-transform: uppercase;
+
+    a {
+        width: 100%;
+        height: 100%
+    }
 
     &:not(:disabled):hover {
         background-color: ${props => props.theme['yellow-dark']}

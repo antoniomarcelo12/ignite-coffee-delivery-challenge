@@ -1,4 +1,4 @@
-import { CartAndTitleWrapper, CartItemAmountRemoveButton, CartItemInfoWrapper, CartItemWrapper, CartSummary, CartWrapper, ConfirmOrder } from "./styles";
+import { CartAndTitleWrapper, CartItemAmountRemoveButton, CartItemInfoWrapper, CartItemWrapper, CartSummary, CartWrapper, ConfirmOrderButton } from "./styles";
 import { AmountButton } from "../buttons/AmountButton";
 import { RemoveButton } from "../buttons/RemoveButton";
 import { useContext } from "react";
@@ -6,8 +6,8 @@ import { CartContext } from "../../contexts/CartContext";
 
 export function Cart() {
 
-    const { cartState, totalPrice } = useContext(CartContext)
-    
+    const { cartState, totalPrice, totalPriceString } = useContext(CartContext)
+
     return(
         <CartAndTitleWrapper>
             <h1 className="completeYourOrderCartHeader">Cafés selecionados</h1>
@@ -59,14 +59,14 @@ export function Cart() {
                         cartState.length > 0 ? (
                                     <>
                                         <CartSummary>
-                                            <div><p>Total de itens</p><p>R$ { totalPrice }</p></div>
+                                            <div><p>Total de itens</p><p>R$ { totalPriceString }</p></div>
                                             <div><p>Entrega</p><p>R$ 3,50</p></div>
-                                            <div className="summaryTotal"><p>Total</p><p>R$ {totalPrice + 3.50}</p></div>
+                                            <div className="summaryTotal"><p>Total</p><p>R$ { totalPriceString }</p></div>
                                         </CartSummary>
 
-                                        <ConfirmOrder>
-                                            Confirmar pedido
-                                        </ConfirmOrder>
+                                            <ConfirmOrderButton type="submit">
+                                                        Confirmar pedido
+                                            </ConfirmOrderButton>
                                     </>
 
                         ) : (
@@ -77,9 +77,9 @@ export function Cart() {
                                     <div className="summaryTotal"><p>Total</p><p>R$ {totalPrice}</p></div>
                                 </CartSummary>
 
-                                <ConfirmOrder disabled={true}>
+                                <ConfirmOrderButton disabled={true}>
                                     Confirmar pedido
-                                </ConfirmOrder>
+                                </ConfirmOrderButton>
                             </>
                         )
 

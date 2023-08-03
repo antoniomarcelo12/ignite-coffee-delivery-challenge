@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const AddressForm = styled.form`
+export const AddressFormStyle = styled.div`
 
     input {
         padding: .75rem;
@@ -12,7 +12,7 @@ export const AddressForm = styled.form`
         background-color: ${props => props.theme['base-input']};
         color: ${props => props.theme['base-text']};
         
-        font-family: Roboto;
+        font-family: 'Roboto';
         font-size: .875rem;
         font-style: normal;
         font-weight: 400;
@@ -46,6 +46,24 @@ export const LastInfoWrapper = styled.div`
     flex-wrap: wrap;
 
     gap: .765rem;
+
+    position: relative;
+
+    &::after {
+        content: 'optional';
+        position: absolute;
+        top: 25%;
+        right: 10px;
+
+        font-style: italic;
+
+        font-family: 'Roboto';
+        font-size: .75rem;
+        font-weight: 400;
+        line-height: 130%;
+        color: ${props => props.theme['base-label']};
+
+    }
 
     .numeroInput {
         width: 40%;

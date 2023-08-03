@@ -43,6 +43,11 @@ export const PaymentButtons = styled.div`
     margin-top: 2rem;
     gap: .75rem;
 
+    .active {
+        background-color: ${props => props.theme['purple-light']};
+        border: 1px solid ${props => props.theme['purple']};
+    }
+
     button {
         background-color: ${props => props.theme['base-button']};
         color: ${props => props.theme['base-text']};
@@ -60,6 +65,9 @@ export const PaymentButtons = styled.div`
         gap: .75rem;
 
         border-radius: 6px;
+    }
 
+    @media (max-width: 750px) {
+        flex-direction: column;
     }
 `

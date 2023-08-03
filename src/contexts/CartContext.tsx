@@ -20,6 +20,8 @@ interface CartContextType {
     removeProductFromCart: (ProductToRemove: CoffeeCartType) => void;
     totalItemsOnCart: number;
     totalPrice: number;
+    totalPriceString: string;
+    resetCartState: () => void;
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -29,6 +31,11 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     const [cartState, setCartState] = useState<CoffeeCartType[]>([])
     let totalItemsOnCart = 0
     let totalPrice = 0
+    let totalPriceString = ''
+    const VALOR_DO_DELIVERY = 3.50
+
+
+    
 
     
     function addItemToCart(itemToAdd: CoffeeCartType) {
@@ -77,15 +84,21 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
         setCartState(updatedCart)
     }
+
+    function resetCartState() {
+        setCartState([])
+    }
+
     
     cartState.forEach(el => {
         totalItemsOnCart += el.coffeeAmount
         totalPrice += (el.coffeePrice * el.coffeeAmount)
-        totalPrice = +totalPrice.toFixed(2)
     })
+    totalPrice + VALOR_DO_DELIVERY
+    totalPriceString = totalPrice.toFixed(2)
 
     return(
-        <CartContext.Provider value={{cartState, addItemToCart, removeItemFromCart, totalItemsOnCart, totalPrice, removeProductFromCart}}>
+        <CartContext.Provider value={{ cartState, addItemToCart, removeItemFromCart, totalItemsOnCart, totalPriceString, totalPrice, removeProductFromCart, resetCartState }}>
             { children }
         </CartContext.Provider>
     );

@@ -4,7 +4,7 @@ import { MapPin, ShoppingCart } from 'phosphor-react'
 import { Link } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
 import { useContext, useEffect, useState } from "react";
-import axios from 'axios'; // Importe o pacote geocoder
+import axios from 'axios'; 
 
 export function Header() {
 

@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { ProductType } from "../../../contexts/AllProductsProvider";
 import { CardAmountButtonWrapper } from "./styles";
 import { Minus, Plus } from 'phosphor-react'
 import { CartContext, CoffeeCartType } from "../../../contexts/CartContext";
