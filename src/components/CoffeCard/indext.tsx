@@ -2,6 +2,7 @@ import { CoffeDetails, CoffeCardWrapper, CardAmountCart } from "./styles";
 import { AmountButton } from "../buttons/AmountButton";
 import { AddToCartButton } from "./components/AddToCartButton";
 import { CoffeeCartType } from "../../contexts/CartContext";
+import { Link } from "react-router-dom";
 
 interface CoffeeCardProps {
     coffee: CoffeeCartType
@@ -22,7 +23,9 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
                 <p className="CoffeePrice"><span>R$</span>{coffee.coffeePrice}</p>
                 <CardAmountCart>
                     <AmountButton coffee={coffee} />
-                    <AddToCartButton />
+                    <Link to='/cart'>
+                        <AddToCartButton />
+                    </Link>
                 </CardAmountCart>
             </CoffeDetails>
         </CoffeCardWrapper>

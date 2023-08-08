@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CoffeeCard } from "../CoffeCard/indext";
 import { CoffeeCardWrapper, CoffeeListWrapper } from "./styles";
-import { AllProductsContext } from "../../contexts/AllProductsContexter";
+import { AllProductsContext } from "../../contexts/AllProductsContext";
 
 export function CoffeeList() {
     const { AllProductsData } = useContext(AllProductsContext)
