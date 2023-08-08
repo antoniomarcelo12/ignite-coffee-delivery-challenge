@@ -22,6 +22,7 @@ interface CartContextType {
     totalPrice: number;
     totalPriceString: string;
     resetCartState: () => void;
+    totalPricePlusDelivery: number;
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -94,11 +95,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         totalItemsOnCart += el.coffeeAmount
         totalPrice += (el.coffeePrice * el.coffeeAmount)
     })
-    totalPrice + VALOR_DO_DELIVERY
+    const totalPricePlusDelivery = totalPrice += VALOR_DO_DELIVERY
     totalPriceString = totalPrice.toFixed(2)
+    console.log("totalPriceString: ", totalPrice)
 
     return(
-        <CartContext.Provider value={{ cartState, addItemToCart, removeItemFromCart, totalItemsOnCart, totalPriceString, totalPrice, removeProductFromCart, resetCartState }}>
+        <CartContext.Provider value={{ cartState, addItemToCart, removeItemFromCart, totalItemsOnCart, totalPriceString, totalPrice, removeProductFromCart, resetCartState, totalPricePlusDelivery }}>
             { children }
         </CartContext.Provider>
     );

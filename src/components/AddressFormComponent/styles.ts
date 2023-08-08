@@ -16,7 +16,11 @@ export const AddressFormStyle = styled.div`
         font-size: .875rem;
         font-style: normal;
         font-weight: 400;
-        line-height: 130%;
+       line-height: 130%;
+
+       &:focus {
+        border: 1px solid ${props => props.theme['yellow']};
+       }
 
     }
 
@@ -93,3 +97,4 @@ export const LastInfoWrapper = styled.div`
 
     }
 `
+

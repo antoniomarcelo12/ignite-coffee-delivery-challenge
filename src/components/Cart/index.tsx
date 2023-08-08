@@ -3,11 +3,12 @@ import { AmountButton } from "../buttons/AmountButton";
 import { RemoveButton } from "../buttons/RemoveButton";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
+import { PaymentMethodContext } from "../../contexts/PaymentMethodContext";
 
 export function Cart() {
 
-    const { cartState, totalPrice, totalPriceString } = useContext(CartContext)
-
+    const { cartState, totalPrice, totalPriceString, totalPricePlusDelivery } = useContext(CartContext)
+    const { paymentMethod } = useContext(PaymentMethodContext)
     return(
         <CartAndTitleWrapper>
             <h1 className="completeYourOrderCartHeader">Cafés selecionados</h1>
@@ -51,39 +52,40 @@ export function Cart() {
                                                             </CartItemInfoWrapper>
                                         
                                                         </CartItemWrapper>
-                                        )}
+                                                )
+                        }
 
 
 
-                {
-                        cartState.length > 0 ? (
+                        {
+                                ((cartState.length > 0) && (paymentMethod !== undefined)) ? (
+                                            <>
+                                                <CartSummary>
+                                                    <div><p>Total de itens</p><p>R$ { totalPriceString }</p></div>
+                                                    <div><p>Entrega</p><p>R$ 3,50</p></div>
+                                                    <div className="summaryTotal"><p>Total</p><p>R$ { totalPricePlusDelivery }</p></div>
+                                                </CartSummary>
+
+                                                    <ConfirmOrderButton type="submit">
+                                                                Confirmar pedido
+                                                    </ConfirmOrderButton>
+                                            </>
+
+                                ) : (
                                     <>
                                         <CartSummary>
-                                            <div><p>Total de itens</p><p>R$ { totalPriceString }</p></div>
-                                            <div><p>Entrega</p><p>R$ 3,50</p></div>
-                                            <div className="summaryTotal"><p>Total</p><p>R$ { totalPriceString }</p></div>
+                                            <div><p>Total de itens</p><p>R$ 0,00</p></div>
+                                            <div><p>Entrega</p><p>R$ 0,00</p></div>
+                                            <div className="summaryTotal"><p>Total</p><p>R$ 0,00</p></div>
                                         </CartSummary>
 
-                                            <ConfirmOrderButton type="submit">
-                                                        Confirmar pedido
-                                            </ConfirmOrderButton>
+                                        <ConfirmOrderButton disabled={true}>
+                                            Confirmar pedido
+                                        </ConfirmOrderButton>
                                     </>
+                                )
 
-                        ) : (
-                            <>
-                                <CartSummary>
-                                    <div><p>Total de itens</p><p>R$ { totalPrice }</p></div>
-                                    <div><p>Entrega</p><p>R$ 0,00</p></div>
-                                    <div className="summaryTotal"><p>Total</p><p>R$ {totalPrice}</p></div>
-                                </CartSummary>
-
-                                <ConfirmOrderButton disabled={true}>
-                                    Confirmar pedido
-                                </ConfirmOrderButton>
-                            </>
-                        )
-
-                }                                                    
+                        }                                                    
 
             </CartWrapper>
         </CartAndTitleWrapper>
